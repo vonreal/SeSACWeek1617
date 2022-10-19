@@ -16,9 +16,6 @@ class SimpleCollectionViewController: UICollectionViewController {
     
     var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
-    // cellRegistration의 실행 실습
-    var hello: (() -> Void)!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,11 +47,6 @@ class SimpleCollectionViewController: UICollectionViewController {
             backgroundConfig.cornerRadius = 10
             cell.backgroundConfiguration = backgroundConfig
         }
-        hello = {
-            print("hello")
-        }
-        
-        hello()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -75,7 +67,7 @@ extension SimpleCollectionViewController {
     // layout 자체는 UICollectionViewCompositionalLayout이지만, 반환 자체는 UICollectionViewLayout를 진행한다. (collectionView.collectionViewLayout의 type이 후자이기 때문이다.)
     private func createLayout() -> UICollectionViewLayout {
         // 14+ 컬렉션뷰를 테이블뷰 스타일처럼 사용 가능 (list configuration)
-        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         // 셀 외부 변경
         configuration.showsSeparators = false
         configuration.backgroundColor = .brown
