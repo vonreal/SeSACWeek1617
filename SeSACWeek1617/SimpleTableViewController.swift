@@ -16,11 +16,19 @@ class SimpleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = UITableViewCell()
+        var content = cell.defaultContentConfiguration()
+        content.text = list[indexPath.row]
+        content.secondaryText = "안녕하세요"
+        
+        cell.contentConfiguration = content
+        
+        return cell
     }
 }
 
