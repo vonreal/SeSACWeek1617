@@ -19,15 +19,7 @@ class SimpleCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 14+ 컬렉션뷰를 테이블뷰 스타일처럼 사용 가능 (list configuration)
-        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        // 셀 외부 변경
-        configuration.showsSeparators = false
-        configuration.backgroundColor = .brown
-        
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        
-        collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = createLayout()
         
         cellRegistration = UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
             
@@ -58,5 +50,20 @@ class SimpleCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
         
         return cell
+    }
+}
+
+extension SimpleCollectionViewController {
+    
+    // layout 자체는 UICollectionViewCompositionalLayout이지만, 반환 자체는 UICollectionViewLayout를 진행한다. (collectionView.collectionViewLayout의 type이 후자이기 때문이다.)
+    private func createLayout() -> UICollectionViewLayout {
+        // 14+ 컬렉션뷰를 테이블뷰 스타일처럼 사용 가능 (list configuration)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        // 셀 외부 변경
+        configuration.showsSeparators = false
+        configuration.backgroundColor = .brown
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
     }
 }
