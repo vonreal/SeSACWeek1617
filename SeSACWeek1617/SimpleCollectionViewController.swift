@@ -16,6 +16,9 @@ class SimpleCollectionViewController: UICollectionViewController {
     
     var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
+    // cellRegistration의 실행 실습
+    var hello: (() -> Void)!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +27,8 @@ class SimpleCollectionViewController: UICollectionViewController {
         cellRegistration = UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
             
             // 셀 내부 변경
-            var content = cell.defaultContentConfiguration()
+//            var content = cell.defaultContentConfiguration()
+            var content = UIListContentConfiguration.valueCell()
             
             content.text = itemIdentifier
             content.textProperties.color = .red
@@ -35,20 +39,33 @@ class SimpleCollectionViewController: UICollectionViewController {
             
             content.image = UIImage(systemName: "person.fill")
             content.imageProperties.tintColor = .yellow
-            
+            print("setup")
             cell.contentConfiguration = content
+            
+            // 셀의 백그라운드를 변경하기
+            var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
+            backgroundConfig.backgroundColor = .clear
+            backgroundConfig.strokeColor = .systemPink
+            backgroundConfig.strokeWidth = 2
+            backgroundConfig.cornerRadius = 10
+            cell.backgroundConfiguration = backgroundConfig
         }
+        hello = {
+            print("hello")
+        }
+        
+        hello()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return list.count
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let item = list[indexPath.item]
         let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
-        
+
         return cell
     }
 }
