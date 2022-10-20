@@ -16,6 +16,8 @@ class SimpleCollectionViewController: UICollectionViewController {
     
     var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
+//    var dataSource: UICollectionViewDiffableDataSource<Int, User>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +49,16 @@ class SimpleCollectionViewController: UICollectionViewController {
             backgroundConfig.cornerRadius = 10
             cell.backgroundConfiguration = backgroundConfig
         }
+        
+//        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+//            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+//            return cell
+//        })
+//        
+//        var snapshot = NSDiffableDataSourceSnapshot<Int, User>()
+//        snapshot.appendSections([0])
+//        snapshot.appendItems(list)
+//        dataSource.apply(snapshot)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

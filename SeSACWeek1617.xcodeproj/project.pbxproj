@@ -15,6 +15,7 @@
 		7678223C28FE31710081EA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7678223A28FE31710081EA72 /* LaunchScreen.storyboard */; };
 		7678224428FE38F80081EA72 /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678224328FE38F80081EA72 /* SimpleCollectionViewController.swift */; };
 		7678224828FF90660081EA72 /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678224728FF90660081EA72 /* DiffableCollectionViewController.swift */; };
+		76CEDBF02900D08F00521BB5 /* CObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDBEF2900D08F00521BB5 /* CObservable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7678223D28FE31710081EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7678224328FE38F80081EA72 /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
 		7678224728FF90660081EA72 /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
+		76CEDBEF2900D08F00521BB5 /* CObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CObservable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		7678222E28FE31700081EA72 /* SeSACWeek1617 */ = {
 			isa = PBXGroup;
 			children = (
+				76CEDBEE2900CFCF00521BB5 /* MVVMSample */,
 				7678222F28FE31700081EA72 /* AppDelegate.swift */,
 				7678223128FE31700081EA72 /* SceneDelegate.swift */,
 				7678223328FE31700081EA72 /* SimpleTableViewController.swift */,
@@ -71,6 +74,14 @@
 				7678223D28FE31710081EA72 /* Info.plist */,
 			);
 			path = SeSACWeek1617;
+			sourceTree = "<group>";
+		};
+		76CEDBEE2900CFCF00521BB5 /* MVVMSample */ = {
+			isa = PBXGroup;
+			children = (
+				76CEDBEF2900D08F00521BB5 /* CObservable.swift */,
+			);
+			path = MVVMSample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76CEDBF02900D08F00521BB5 /* CObservable.swift in Sources */,
 				7678224828FF90660081EA72 /* DiffableCollectionViewController.swift in Sources */,
 				7678224428FE38F80081EA72 /* SimpleCollectionViewController.swift in Sources */,
 				7678223428FE31700081EA72 /* SimpleTableViewController.swift in Sources */,

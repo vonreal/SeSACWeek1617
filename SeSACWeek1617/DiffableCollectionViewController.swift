@@ -12,7 +12,12 @@ class DiffableCollectionViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var list = ["아이폰", "아이패드", "에어팟", "맥북", "애플 워치"]
+    var list = [
+        User(name: "뽀로로", age: 3),
+        User(name: "뽀로로2", age: 23),
+        User(name: "뽀로로3", age: 33),
+        User(name: "뽀로로4", age: 43)
+    ]
     
 //    private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
