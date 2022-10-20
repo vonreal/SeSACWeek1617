@@ -12,12 +12,12 @@ class DiffableCollectionViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var list = [
-        User(name: "뽀로로", age: 3),
-        User(name: "뽀로로2", age: 23),
-        User(name: "뽀로로3", age: 33),
-        User(name: "뽀로로4", age: 43)
-    ]
+//    var list = [
+//        User(name: "뽀로로", age: 3),
+//        User(name: "뽀로로2", age: 23),
+//        User(name: "뽀로로3", age: 33),
+//        User(name: "뽀로로4", age: 43)
+//    ]
     
 //    private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
@@ -86,7 +86,7 @@ extension DiffableCollectionViewController {
         // Initial
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
         snapshot.appendSections([0])
-        snapshot.appendItems(list)
+//        snapshot.appendItems(list)
         dataSource.apply(snapshot)
     }
 }
