@@ -16,6 +16,9 @@
 		7678224428FE38F80081EA72 /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678224328FE38F80081EA72 /* SimpleCollectionViewController.swift */; };
 		7678224828FF90660081EA72 /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678224728FF90660081EA72 /* DiffableCollectionViewController.swift */; };
 		76CEDBF02900D08F00521BB5 /* CObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDBEF2900D08F00521BB5 /* CObservable.swift */; };
+		76CEDBF22900D13400521BB5 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDBF12900D13400521BB5 /* NewsViewController.swift */; };
+		76CEDBF42900D24400521BB5 /* NewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDBF32900D24400521BB5 /* NewViewModel.swift */; };
+		76CEDBF62900D7A900521BB5 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDBF52900D7A900521BB5 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		7678224328FE38F80081EA72 /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
 		7678224728FF90660081EA72 /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
 		76CEDBEF2900D08F00521BB5 /* CObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CObservable.swift; sourceTree = "<group>"; };
+		76CEDBF12900D13400521BB5 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		76CEDBF32900D24400521BB5 /* NewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewModel.swift; sourceTree = "<group>"; };
+		76CEDBF52900D7A900521BB5 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				76CEDBEF2900D08F00521BB5 /* CObservable.swift */,
+				76CEDBF12900D13400521BB5 /* NewsViewController.swift */,
+				76CEDBF32900D24400521BB5 /* NewViewModel.swift */,
+				76CEDBF52900D7A900521BB5 /* News.swift */,
 			);
 			path = MVVMSample;
 			sourceTree = "<group>";
@@ -158,7 +167,10 @@
 				76CEDBF02900D08F00521BB5 /* CObservable.swift in Sources */,
 				7678224828FF90660081EA72 /* DiffableCollectionViewController.swift in Sources */,
 				7678224428FE38F80081EA72 /* SimpleCollectionViewController.swift in Sources */,
+				76CEDBF62900D7A900521BB5 /* News.swift in Sources */,
+				76CEDBF42900D24400521BB5 /* NewViewModel.swift in Sources */,
 				7678223428FE31700081EA72 /* SimpleTableViewController.swift in Sources */,
+				76CEDBF22900D13400521BB5 /* NewsViewController.swift in Sources */,
 				7678223028FE31700081EA72 /* AppDelegate.swift in Sources */,
 				7678223228FE31700081EA72 /* SceneDelegate.swift in Sources */,
 			);

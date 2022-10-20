@@ -16,6 +16,7 @@ class CObservable<T> {
     
     var value: T {
         didSet {
+            print("didset, \(value)")
             listener?(value)
         }
     }
