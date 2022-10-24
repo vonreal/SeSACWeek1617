@@ -29,6 +29,7 @@ class RxCocoaExampleViewController: UIViewController {
         setTableView()
         setPickerView()
         setSwitch()
+        setSign()
     }
     
     func setTableView() {
@@ -97,5 +98,14 @@ class RxCocoaExampleViewController: UIViewController {
             .bind(to: simpleSwitch.rx.isOn)
             .disposed(by: disposeBag)
         
+    }
+    
+    func setSign() {
+        //ex. signTF(Observable), emailTF(Observable)를 Label에 보여줌(Observer, bind)
+        Observable.combineLatest(signName.rx.text, signEmail.rx.text) { value1, value2 in
+            return "name은 \(value1)이고, 이메일은 \(value2)입니다."
+        }
+        .bind(to: simpleLabel.rx.text)
+        .disposed(by: disposeBag)
     }
 }
