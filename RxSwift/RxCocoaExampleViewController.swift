@@ -15,6 +15,11 @@ class RxCocoaExampleViewController: UIViewController {
     @IBOutlet weak var simpleTableView: UITableView!
     @IBOutlet weak var simplePickerView: UIPickerView!
     @IBOutlet weak var simpleLabel: UILabel!
+    @IBOutlet weak var simpleSwitch: UISwitch!
+    
+    @IBOutlet weak var signName: UITextField!
+    @IBOutlet weak var signEmail: UITextField!
+    @IBOutlet weak var signButton: UIButton!
     
     let disposeBag = DisposeBag()
     
@@ -23,6 +28,7 @@ class RxCocoaExampleViewController: UIViewController {
 
         setTableView()
         setPickerView()
+        setSwitch()
     }
     
     func setTableView() {
@@ -80,5 +86,16 @@ class RxCocoaExampleViewController: UIViewController {
             .map { $0.description }
             .bind(to: simpleLabel.rx.text)
             .disposed(by: disposeBag)
+    }
+    
+    func setSwitch() {
+//        Observable.just(false)
+//            .bind(to: simpleSwitch.rx.isOn)
+//            .disposed(by: disposeBag)
+        
+        Observable.of(false)
+            .bind(to: simpleSwitch.rx.isOn)
+            .disposed(by: disposeBag)
+        
     }
 }
