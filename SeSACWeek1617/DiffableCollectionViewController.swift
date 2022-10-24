@@ -77,7 +77,7 @@ extension DiffableCollectionViewController {
                 
                 DispatchQueue.main.async {
                     content.image = UIImage(data: data!)
-                    Ωcell.contentConfiguration = content
+                    cell.contentConfiguration = content
                 }
             }
             

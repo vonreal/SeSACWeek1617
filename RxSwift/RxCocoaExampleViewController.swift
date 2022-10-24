@@ -26,7 +26,7 @@ class RxCocoaExampleViewController: UIViewController {
     
     func setTableView() {
         
-        simpleTableView.register(UITableView.self, forCellReuseIdentifier: "Cell")
+        simpleTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         // RxSwift/UITableView+Rx의 Example!
         let items = Observable.just([
@@ -45,6 +45,16 @@ class RxCocoaExampleViewController: UIViewController {
     }
     
     func setPickerView() {
-        
+        let items = Observable.just([
+                "Movie",
+                "Anime",
+                "Drama"
+            ])
+     
+        items
+            .bind(to: simplePickerView.rx.itemTitles) { (row, element) in
+                return element
+            }
+            .disposed(by: disposeBag)
     }
 }
