@@ -30,6 +30,7 @@ class RxCocoaExampleViewController: UIViewController {
         setPickerView()
         setSwitch()
         setSign()
+        setOperator()
     }
     
     func setTableView() {
@@ -132,5 +133,47 @@ class RxCocoaExampleViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
+    }
+    
+    func setOperator() {
+        
+        let itemsA = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
+        let itemsB = [2.3, 2.0, 1.3]
+    
+        Observable.just(itemsA) // 매개변수가 하나뿐
+            .subscribe { value in
+                print("just - \(value)")
+            } onError: { error in
+                print("just - \(error)")
+            } onCompleted: {
+                print("just completed")
+            } onDisposed: {
+                print("just disposed")
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.of(itemsA, itemsB) // 매개변수가 가변매개변수로 여러개 가능
+            .subscribe { value in
+                print("of - \(value)")
+            } onError: { error in
+                print("of - \(error)")
+            } onCompleted: {
+                print("of completed")
+            } onDisposed: {
+                print("of disposed")
+            }
+            .disposed(by: disposeBag)
+    
+        Observable.from(itemsA) // 값을 하나씩 읽어옴
+            .subscribe { value in
+                print("from - \(value)")
+            } onError: { error in
+                print("from - \(error)")
+            } onCompleted: {
+                print("from completed")
+            } onDisposed: {
+                print("from disposed")
+            }
+            .disposed(by: disposeBag)
     }
 }
