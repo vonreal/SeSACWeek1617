@@ -65,5 +65,20 @@ class RxCocoaExampleViewController: UIViewController {
                 return element
             }
             .disposed(by: disposeBag)
+        
+/*
+            .subscribe(onNext: { value in
+                print(value)
+            })
+            와
+ 
+            .bind(to: simpleLabel.rx.text)는 비슷?
+ 
+ */
+        
+        simplePickerView.rx.modelSelected(String.self)
+            .map { $0.description }
+            .bind(to: simpleLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }
