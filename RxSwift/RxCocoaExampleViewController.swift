@@ -14,6 +14,7 @@ class RxCocoaExampleViewController: UIViewController {
 
     @IBOutlet weak var simpleTableView: UITableView!
     @IBOutlet weak var simplePickerView: UIPickerView!
+    @IBOutlet weak var simpleLabel: UILabel!
     
     let disposeBag = DisposeBag()
     
@@ -44,15 +45,7 @@ class RxCocoaExampleViewController: UIViewController {
         .disposed(by: disposeBag)
         
         simpleTableView.rx.modelSelected(String.self)
-            .subscribe { value in
-                print(value)
-            } onError: { error in
-                print(error)
-            } onCompleted: {
-                print("onCompleted")
-            } onDisposed: {
-                print("onDisposed")
-            }
+            .bind(to: simpleLabel.rx.text)
             .disposed(by: disposeBag)
 
     }
