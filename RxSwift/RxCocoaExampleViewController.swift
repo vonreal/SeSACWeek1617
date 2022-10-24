@@ -107,5 +107,20 @@ class RxCocoaExampleViewController: UIViewController {
         }
         .bind(to: simpleLabel.rx.text)
         .disposed(by: disposeBag)
+        
+        signName                // UITextField
+            .rx                 // Reactive
+            .text               // String?
+            .orEmpty            // String
+            .map { $0.count }   // Int
+            .map { $0 < 4 }     // Bool [최종타입]
+        //  .map { $0.count < 4 }  Bool
+            .bind(to: signEmail.rx.isHidden, signButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        signEmail.rx.text.orEmpty
+            .map { $0.count > 4 }
+            .bind(to: signButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }
