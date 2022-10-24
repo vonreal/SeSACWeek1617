@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hBe-T1-hH8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TEW-bC-iFA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -139,6 +139,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVs-Um-y2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1371" y="-1209"/>
+        </scene>
+        <!--Rx Cocoa Example View Controller-->
+        <scene sceneID="Ww8-5z-wjb">
+            <objects>
+                <viewController id="TEW-bC-iFA" customClass="RxCocoaExampleViewController" customModule="SeSACWeek1617" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kdn-Nh-59d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jgv-0r-43i">
+                                <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="NHB-iu-x9G"/>
+                                </constraints>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJ0-Lt-L19">
+                                <rect key="frame" x="0.0" y="700" width="414" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="wUP-iL-skn"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="i0F-E2-Dl7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i0F-E2-Dl7" firstAttribute="bottom" secondItem="BJ0-Lt-L19" secondAttribute="bottom" id="FOv-wL-bbY"/>
+                            <constraint firstItem="BJ0-Lt-L19" firstAttribute="trailing" secondItem="i0F-E2-Dl7" secondAttribute="trailing" id="RM6-Y7-C3G"/>
+                            <constraint firstItem="BJ0-Lt-L19" firstAttribute="leading" secondItem="i0F-E2-Dl7" secondAttribute="leading" id="gep-N5-AyX"/>
+                            <constraint firstItem="Jgv-0r-43i" firstAttribute="top" secondItem="i0F-E2-Dl7" secondAttribute="top" id="hoJ-nt-RpD"/>
+                            <constraint firstItem="Jgv-0r-43i" firstAttribute="leading" secondItem="i0F-E2-Dl7" secondAttribute="leading" id="sXZ-xz-80U"/>
+                            <constraint firstItem="i0F-E2-Dl7" firstAttribute="trailing" secondItem="Jgv-0r-43i" secondAttribute="trailing" id="zSz-ti-Gkd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="simplePickerView" destination="BJ0-Lt-L19" id="16N-c8-Ssf"/>
+                        <outlet property="simpleTableView" destination="Jgv-0r-43i" id="pqG-ca-ArM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svQ-y5-GrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2323" y="-1175"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="5c9-qv-Dme">

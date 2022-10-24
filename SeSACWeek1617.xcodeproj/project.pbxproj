@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		764075E5290622D900AAAC9A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 764075E4290622D900AAAC9A /* RxCocoa */; };
 		764075E7290622D900AAAC9A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 764075E6290622D900AAAC9A /* RxSwift */; };
+		764075EA290625E900AAAC9A /* RxCocoaExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764075E9290625E900AAAC9A /* RxCocoaExampleViewController.swift */; };
 		7678223028FE31700081EA72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678222F28FE31700081EA72 /* AppDelegate.swift */; };
 		7678223228FE31700081EA72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678223128FE31700081EA72 /* SceneDelegate.swift */; };
 		7678223428FE31700081EA72 /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678223328FE31700081EA72 /* SimpleTableViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		764075E9290625E900AAAC9A /* RxCocoaExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaExampleViewController.swift; sourceTree = "<group>"; };
 		7678222C28FE31700081EA72 /* SeSACWeek1617.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACWeek1617.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7678222F28FE31700081EA72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7678223128FE31700081EA72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		764075E82906247A00AAAC9A /* RxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				764075E9290625E900AAAC9A /* RxCocoaExampleViewController.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				7678223028FE31700081EA72 /* AppDelegate.swift in Sources */,
 				7678223228FE31700081EA72 /* SceneDelegate.swift in Sources */,
 				76CEDBF82900ED8800521BB5 /* DiffableViewModel.swift in Sources */,
+				764075EA290625E900AAAC9A /* RxCocoaExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
