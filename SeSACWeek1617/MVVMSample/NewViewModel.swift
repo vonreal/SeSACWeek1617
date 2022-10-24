@@ -11,6 +11,17 @@ class NewViewModel {
     
     var pageNumber: CObservable<String> = CObservable("3000")
     
+    // 뉴스가 추가되거나 하는 걸 여기서 표현
+    var sample: CObservable<[News.NewsItem]> = CObservable(News.items)
+    
+    func resetSample() {
+        sample.value = []
+    }
+    
+    func loadSample() {
+        sample.value = News.items
+    }
+    
     func changePageNumberFormat(text: String) {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal

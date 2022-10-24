@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6vW-dD-J8X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hBe-T1-hH8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -176,14 +176,33 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MlR-9B-EWg">
+                                <rect key="frame" x="20" y="144" width="374" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUc-2W-KZb">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="load"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nru-LW-tLR">
+                                        <rect key="frame" x="197" y="0.0" width="177" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="reset"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xaH-ct-O0E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MlR-9B-EWg" firstAttribute="leading" secondItem="xaH-ct-O0E" secondAttribute="leading" constant="20" id="3NK-32-MGF"/>
                             <constraint firstItem="xaH-ct-O0E" firstAttribute="trailing" secondItem="f7n-L6-ex6" secondAttribute="trailing" constant="30" id="EhD-kd-lDX"/>
                             <constraint firstItem="f7n-L6-ex6" firstAttribute="leading" secondItem="xaH-ct-O0E" secondAttribute="leading" constant="30" id="Exo-hg-UJa"/>
                             <constraint firstItem="2jv-XS-W5e" firstAttribute="leading" secondItem="xaH-ct-O0E" secondAttribute="leading" id="KrQ-3l-14d"/>
+                            <constraint firstItem="xaH-ct-O0E" firstAttribute="trailing" secondItem="MlR-9B-EWg" secondAttribute="trailing" constant="20" id="VBs-6t-ABf"/>
                             <constraint firstItem="xaH-ct-O0E" firstAttribute="bottom" secondItem="2jv-XS-W5e" secondAttribute="bottom" id="ZHk-mg-o17"/>
+                            <constraint firstItem="MlR-9B-EWg" firstAttribute="top" secondItem="f7n-L6-ex6" secondAttribute="bottom" constant="20" id="eee-8j-kuW"/>
+                            <constraint firstItem="2jv-XS-W5e" firstAttribute="top" secondItem="MlR-9B-EWg" secondAttribute="bottom" constant="20" id="gJ8-FP-G8q"/>
                             <constraint firstItem="2jv-XS-W5e" firstAttribute="top" secondItem="f7n-L6-ex6" secondAttribute="bottom" constant="100" id="hJn-pH-wHO"/>
                             <constraint firstItem="xaH-ct-O0E" firstAttribute="trailing" secondItem="2jv-XS-W5e" secondAttribute="trailing" id="rVO-gm-MzB"/>
                             <constraint firstItem="f7n-L6-ex6" firstAttribute="top" secondItem="xaH-ct-O0E" secondAttribute="top" constant="30" id="tXe-Ub-K0Q"/>
@@ -191,7 +210,9 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="2jv-XS-W5e" id="Vck-pp-pek"/>
+                        <outlet property="loadButton" destination="qUc-2W-KZb" id="Oh0-0B-74W"/>
                         <outlet property="numberTextField" destination="f7n-L6-ex6" id="YVg-rv-0Wg"/>
+                        <outlet property="resetButton" destination="nru-LW-tLR" id="ads-Sj-Kwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cB-2p-HAR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

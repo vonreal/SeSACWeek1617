@@ -6,31 +6,35 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DiffableCollectionViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-//    var list = [
-//        User(name: "뽀로로", age: 3),
-//        User(name: "뽀로로2", age: 23),
-//        User(name: "뽀로로3", age: 33),
-//        User(name: "뽀로로4", age: 43)
-//    ]
+    private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
-//    private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
+    var viewModel = DiffableViewModel()
+    private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.collectionViewLayout = createLayout()
         configureDataSource()
-        
+
+        collectionView.collectionViewLayout = createLayout()
         collectionView.delegate = self
+        
         searchBar.delegate = self
+        
+        viewModel.photoList.bind { photo in
+            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(photo.results)
+            self.dataSource.apply(snapshot)
+        }
     }
 }
 
@@ -39,10 +43,10 @@ extension DiffableCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         
-        let alert = UIAlertController(title: item, message: "클릭 ~", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .cancel)
-        alert.addAction(ok)
-        present(alert, animated: true)
+//        let alert = UIAlertController(title: item, message: "클릭 ~", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "확인", style: .cancel)
+//        alert.addAction(ok)
+//        present(alert, animated: true)
     }
 }
 
@@ -50,9 +54,7 @@ extension DiffableCollectionViewController: UICollectionViewDelegate {
 extension DiffableCollectionViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        var snapshot = dataSource.snapshot()
-        snapshot.appendItems([searchBar.text!])
-        dataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.requestSearchPhoto(query: searchBar.text!)
     }
 }
 
@@ -65,11 +67,20 @@ extension DiffableCollectionViewController {
     }
     
     private func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SearchResult>(handler: { cell, indexPath, itemIdentifier in
             var content = UIListContentConfiguration.valueCell()
-            content.text = itemIdentifier
-            content.secondaryText = "\(itemIdentifier.count)"
-            cell.contentConfiguration = content
+            content.text = String(itemIdentifier.likes)
+
+            DispatchQueue.global().async {
+                let url = URL(string: itemIdentifier.urls.thumb)!
+                let data = try? Data(contentsOf: url)
+                
+                DispatchQueue.main.async {
+                    content.image = UIImage(data: data!)
+                    Ωcell.contentConfiguration = content
+                }
+            }
+            
             
             var background = UIBackgroundConfiguration.listPlainCell()
             background.strokeWidth = 2
@@ -82,11 +93,5 @@ extension DiffableCollectionViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
-        // Initial
-        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        snapshot.appendSections([0])
-//        snapshot.appendItems(list)
-        dataSource.apply(snapshot)
     }
 }
