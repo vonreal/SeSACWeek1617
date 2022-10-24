@@ -45,6 +45,9 @@ class RxCocoaExampleViewController: UIViewController {
         .disposed(by: disposeBag)
         
         simpleTableView.rx.modelSelected(String.self)
+            .map { data in
+                "\(data)를 클릭했습니다."
+            }
             .bind(to: simpleLabel.rx.text)
             .disposed(by: disposeBag)
 
