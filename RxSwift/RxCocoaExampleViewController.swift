@@ -102,7 +102,7 @@ class RxCocoaExampleViewController: UIViewController {
     
     func setSign() {
         //ex. signTF(Observable), emailTF(Observable)를 Label에 보여줌(Observer, bind)
-        Observable.combineLatest(signName.rx.text, signEmail.rx.text) { value1, value2 in
+        Observable.combineLatest(signName.rx.text.orEmpty, signEmail.rx.text.orEmpty) { value1, value2 in
             return "name은 \(value1)이고, 이메일은 \(value2)입니다."
         }
         .bind(to: simpleLabel.rx.text)
