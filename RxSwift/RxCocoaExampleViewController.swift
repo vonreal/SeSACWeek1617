@@ -41,7 +41,20 @@ class RxCocoaExampleViewController: UIViewController {
             cell.textLabel?.text = "\(element) @ row \(row)"
             return cell
         }
-        .disposed(by: disposeBag) // 구독 취소
+        .disposed(by: disposeBag)
+        
+        simpleTableView.rx.modelSelected(String.self)
+            .subscribe { value in
+                print(value)
+            } onError: { error in
+                print(error)
+            } onCompleted: {
+                print("onCompleted")
+            } onDisposed: {
+                print("onDisposed")
+            }
+            .disposed(by: disposeBag)
+
     }
     
     func setPickerView() {
