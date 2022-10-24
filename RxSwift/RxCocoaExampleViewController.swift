@@ -122,5 +122,15 @@ class RxCocoaExampleViewController: UIViewController {
             .map { $0.count > 4 }
             .bind(to: signButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        signButton.rx.tap
+            .subscribe { _ in
+                let alert = UIAlertController(title: "제목", message: "메세지", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "취소", style: .cancel)
+                alert.addAction(cancel)
+                self.present(alert, animated: true)
+            }
+            .disposed(by: disposeBag)
+
     }
 }
