@@ -33,6 +33,10 @@ class RxCocoaExampleViewController: UIViewController {
         setOperator()
     }
     
+    deinit {
+        print("❤️❤️❤️❤️RxCocoaExampleViewController Deinit❤️❤️❤️❤️")
+    }
+    
     func setTableView() {
         
         simpleTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -67,7 +71,7 @@ class RxCocoaExampleViewController: UIViewController {
                 "Anime",
                 "Drama"
             ])
-     
+        
         items
             .bind(to: simplePickerView.rx.itemTitles) { (row, element) in
                 return element
