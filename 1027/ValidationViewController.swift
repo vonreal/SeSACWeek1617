@@ -24,7 +24,7 @@ class ValidationViewController: UIViewController {
         bind()
     }
     
-    // 2) When tapped start validation.
+    /** 2) When tapped start validation. **/
     func bind() {
         
 //        let validation = nameTextField.rx.text  // [TYPE] String?
@@ -71,6 +71,48 @@ class ValidationViewController: UIViewController {
 //            }
 //            .disposed(by: disposeBag) // resource 제거, dispose 리소스 정리, deinit
 
+    }
+    
+    func observableVSSubject() {
+        
+        let sampleInt = Observable<Int>.create { observer in
+            observer.onNext(Int.random(in: 1...100))
+            return Disposables.create()
+        }
+        
+        sampleInt.subscribe { value in
+            print("sampleInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
+        sampleInt.subscribe { value in
+            print("sampleInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
+        sampleInt.subscribe { value in
+            print("sampleInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
+        let subjectInt = BehaviorSubject(value: 0)
+        subjectInt.onNext(Int.random(in: 1...100))
+        
+        subjectInt.subscribe { value in
+            print("subjectInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
+        subjectInt.subscribe { value in
+            print("subjectInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
+        subjectInt.subscribe { value in
+            print("subjectInt: \(value)")
+        }
+        .disposed(by: disposeBag)
+        
     }
 
 }
