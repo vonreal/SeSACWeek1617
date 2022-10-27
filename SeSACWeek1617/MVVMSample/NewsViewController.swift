@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class NewsViewController: UIViewController {
 
@@ -15,6 +17,7 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var loadButton: UIButton!
     
     var viewModel = NewViewModel()
+    let disposeBag = DisposeBag()
     
     var dataSource: UICollectionViewDiffableDataSource<Int, News.NewsItem>!
     
@@ -24,29 +27,32 @@ class NewsViewController: UIViewController {
         configureHierachy()
         configureDataSource()
         bindData()
-        configureViews()        
+//        configureViews()     z
     }
     
     func bindData() {
         // 'NewViewModel.swift'에서 생성한 뷰모델의 값을 'NewsViewController.swift'에 보여줘서 최종적으로 값을 반영하여 'View'를 보여주게 됨. viewmodel -> viewcon -> view
-        viewModel.pageNumber.bind { value in
-            self.numberTextField.text = value
-        }
+//        viewModel.pageNumber.bind { value in
+//            self.numberTextField.text = value
+//        }
         
-        viewModel.sample.bind { item in
+        viewModel.sample
+            .bind { item in
             var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
             snapshot.appendSections([0])
             snapshot.appendItems(item)
             self.dataSource.apply(snapshot, animatingDifferences: false)
-        }
-    }
-    
-    func configureViews() {
-        numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
-        loadButton.addTarget(self, action: #selector(loadButtonClicked), for: .touchUpInside)
-        resetButton.addTarget(self, action: #selector(resetButtonClicked), for: .touchUpInside)
+            }
+            .disposed(by: disposeBag)
         
     }
+    
+//    func configureViews() {
+//        numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
+//        loadButton.addTarget(self, action: #selector(loadButtonClicked), for: .touchUpInside)
+//        resetButton.addTarget(self, action: #selector(resetButtonClicked), for: .touchUpInside)
+//
+//    }
     
     @objc func numberTextFieldChanged() {
         

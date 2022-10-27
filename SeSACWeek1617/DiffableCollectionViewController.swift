@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
 
 class DiffableCollectionViewController: UIViewController {
 
@@ -16,8 +17,10 @@ class DiffableCollectionViewController: UIViewController {
     private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
     
     var viewModel = DiffableViewModel()
-    private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
     
+    let disposeBag = DisposeBag()
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +32,45 @@ class DiffableCollectionViewController: UIViewController {
         
         searchBar.delegate = self
         
-        viewModel.photoList.bind { photo in
-            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
-            snapshot.appendSections([0])
-            snapshot.appendItems(photo.results)
-            self.dataSource.apply(snapshot)
-        }
+        bindData()
+//        viewModel.photoList.bind { photo in
+//            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+//            snapshot.appendSections([0])
+//            snapshot.appendItems(photo.results)
+//            self.dataSource.apply(snapshot)
+//        }
+    }
+    
+    func bindData() {
+        
+        viewModel.photoList
+            .withUnretained(self)
+            .subscribe { (vc, photo) in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+                snapshot.appendSections([0])
+                snapshot.appendItems(photo.results)
+                vc.dataSource.apply(snapshot)
+            } onError: { error in
+                print("====error: \(error)")
+            } onCompleted: {
+                print("completed")
+            } onDisposed: {
+                print("disposed")
+            }
+            .disposed(by: disposeBag)
+//        }
+        
+        searchBar
+            .rx
+            .text
+            .orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe { (vc, value) in
+                vc.viewModel.requestSearchPhoto(query: value)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
