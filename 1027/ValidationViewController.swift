@@ -44,18 +44,18 @@ class ValidationViewController: UIViewController {
         
         let testA = stepButton.rx.tap
             .map { "안녕하세요" }
-            .share()
+            .asDriver(onErrorJustReturn: "")
         
         testA
-            .bind(to: validationLabel.rx.text)
+            .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
         testA
-            .bind(to: nameTextField.rx.text)
+            .drive(nameTextField.rx.text)
             .disposed(by: disposeBag)
         
         testA
-            .bind(to: stepButton.rx.title())
+            .drive(stepButton.rx.title())
             .disposed(by: disposeBag)
         
 //        // Stream == Sequence
