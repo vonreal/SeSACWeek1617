@@ -32,6 +32,7 @@
 		76CEDC042900F18700521BB5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CEDC032900F18700521BB5 /* APIService.swift */; };
 		76DEEEB72908CBBB002635EF /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEEEB62908CBBB002635EF /* SubscribeViewController.swift */; };
 		76FC1D3D290A081200DD8E94 /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC1D3C290A081200DD8E94 /* ValidationViewController.swift */; };
+		76FC1D3F290A22C300DD8E94 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC1D3E290A22C300DD8E94 /* ValidationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		76CEDC032900F18700521BB5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		76DEEEB62908CBBB002635EF /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		76FC1D3C290A081200DD8E94 /* ValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewController.swift; sourceTree = "<group>"; };
+		76FC1D3E290A22C300DD8E94 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				76FC1D3C290A081200DD8E94 /* ValidationViewController.swift */,
+				76FC1D3E290A22C300DD8E94 /* ValidationViewModel.swift */,
 			);
 			path = 1027;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				76DEEEB72908CBBB002635EF /* SubscribeViewController.swift in Sources */,
 				76FC1D3D290A081200DD8E94 /* ValidationViewController.swift in Sources */,
 				76CEDBF02900D08F00521BB5 /* CObservable.swift in Sources */,
+				76FC1D3F290A22C300DD8E94 /* ValidationViewModel.swift in Sources */,
 				7678224828FF90660081EA72 /* DiffableCollectionViewController.swift in Sources */,
 				7678224428FE38F80081EA72 /* SimpleCollectionViewController.swift in Sources */,
 				76CEDBF62900D7A900521BB5 /* News.swift in Sources */,

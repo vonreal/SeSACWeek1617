@@ -18,45 +18,56 @@ class ValidationViewController: UIViewController {
     // 1) Create DisposeBag.
     let disposeBag = DisposeBag()
     
+    
+    // 3) Connect ViewModel.
+    let viewModel = ValidationViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bind()
     }
     
-    /** 2) When tapped start validation. **/
+    // 2) When tapped start validation.
     func bind() {
         
-//        let validation = nameTextField.rx.text  // [TYPE] String?
-//            .orEmpty                            // [TYPE] String
-//            .map { $0.count >= 8 }              // [TYPE] Bool
-//
-//        validation
-//            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
-//            .disposed(by: disposeBag)
-//
-//        validation
-//            .bind { [weak self] value in
-//                let color: UIColor = value ? .white : .lightGray
-//                self?.stepButton.backgroundColor = color
-//            }
-//            .disposed(by: disposeBag)
-        
-        let testA = stepButton.rx.tap
-            .map { "안녕하세요" }
-            .asDriver(onErrorJustReturn: "")
-        
-        testA
+        viewModel.validText
+            .asDriver()
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
-        testA
-            .drive(nameTextField.rx.text)
+    
+        let validation = nameTextField.rx.text  // [TYPE] String?
+            .orEmpty                            // [TYPE] String
+            .map { $0.count >= 8 }              // [TYPE] Bool
+
+        validation
+            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        validation
+            .bind { [weak self] value in
+                let color: UIColor = value ? .white : .lightGray
+                self?.stepButton.backgroundColor = color
+            }
             .disposed(by: disposeBag)
         
-        testA
-            .drive(stepButton.rx.title())
-            .disposed(by: disposeBag)
+        // driver (차이: 노션 참고)
+//        let testA = stepButton.rx.tap
+//            .map { "안녕하세요" }
+//            .asDriver(onErrorJustReturn: "")
+//
+//        testA
+//            .drive(validationLabel.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        testA
+//            .drive(nameTextField.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        testA
+//            .drive(stepButton.rx.title())
+//            .disposed(by: disposeBag)
         
 //        // Stream == Sequence
 //        stepButton.rx.tap
