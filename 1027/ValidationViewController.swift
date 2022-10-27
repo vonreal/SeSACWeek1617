@@ -27,33 +27,49 @@ class ValidationViewController: UIViewController {
     // 2) When tapped start validation.
     func bind() {
         
-        let validation = nameTextField.rx.text  // [TYPE] String?
-            .orEmpty                            // [TYPE] String
-            .map { $0.count >= 8 }              // [TYPE] Bool
+//        let validation = nameTextField.rx.text  // [TYPE] String?
+//            .orEmpty                            // [TYPE] String
+//            .map { $0.count >= 8 }              // [TYPE] Bool
+//
+//        validation
+//            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+//            .disposed(by: disposeBag)
+//
+//        validation
+//            .bind { [weak self] value in
+//                let color: UIColor = value ? .white : .lightGray
+//                self?.stepButton.backgroundColor = color
+//            }
+//            .disposed(by: disposeBag)
         
-        validation
-            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+        let testA = stepButton.rx.tap
+            .map { "안녕하세요" }
+            .share()
+        
+        testA
+            .bind(to: validationLabel.rx.text)
             .disposed(by: disposeBag)
         
-        validation
-            .bind { [weak self] value in
-                let color: UIColor = value ? .white : .lightGray
-                self?.stepButton.backgroundColor = color
-            }
+        testA
+            .bind(to: nameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        // Stream == Sequence
-        stepButton.rx.tap
-            .subscribe { _ in
-                print("next")
-            } onError: { error in
-                print("error")
-            } onCompleted: {
-                print("complete")
-            } onDisposed: {
-                print("dispose")
-            }
-            .disposed(by: disposeBag) // resource 제거, dispose 리소스 정리, deinit
+        testA
+            .bind(to: stepButton.rx.title())
+            .disposed(by: disposeBag)
+        
+//        // Stream == Sequence
+//        stepButton.rx.tap
+//            .subscribe { _ in
+//                print("next")
+//            } onError: { error in
+//                print("error")
+//            } onCompleted: {
+//                print("complete")
+//            } onDisposed: {
+//                print("dispose")
+//            }
+//            .disposed(by: disposeBag) // resource 제거, dispose 리소스 정리, deinit
 
     }
 
